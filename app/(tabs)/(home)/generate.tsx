@@ -66,7 +66,7 @@ export default function generate() {
             <View style={{flex: 1, backgroundColor: 'white', flexDirection: 'row'}}>
                 <Cell></Cell>
                 <Cell>
-                    <Image source={require('@/assets/images/logo.png')}/>
+                    <Image source={require('@/assets/images/logo-1.png')} style={{width: 140, height: 140}}/>
                 </Cell>
                 <Cell></Cell>
             </View>

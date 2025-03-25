@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput } from 'react-native';
 import { useRouter } from 'expo-router';
 import AppbarCustom from '@/components/ui/AppbarCustom';
 import Scafflod from '@/components/ui/Scafflod';
@@ -7,6 +7,29 @@ import ButtonAstro from '@/components/ui/Button';
 
 export default function Index() {
   const router = useRouter();
+
+
+  const [user, setUser] = React.useState<{
+    name: string,
+    gender: string,
+    age: number
+  }>({
+    name: 'Sachindu Kavishka',
+    gender: 'Male',
+    age: 24
+  })
+
+  const [details, setDetails] = React.useState<{
+    details: string,
+    method: string,
+    date: string,
+    sign: string
+  }>({
+    details: 'Sachindu Kavishka',
+    method: 'Schrödinger',
+    date: '2001/03/10',
+    sign: 'Pisces'
+  });
 
   return (
     <Scafflod appbar={<AppbarCustom title="Qi Men Dun Jia" />}>
@@ -23,7 +46,9 @@ export default function Index() {
               <Text>Name</Text>
             </View>
             <View style={styles.tableCell2}>
-              <Text>Sachindu Kavishka</Text>
+            <TextInput style={{padding: 0, margin: 0}} value={user?.name} onChange={(e) => {
+              setUser({...user, name: e.nativeEvent.text});
+            }}/>
             </View>
           </View>
 
@@ -34,7 +59,9 @@ export default function Index() {
               <Text>Gender</Text>
             </View>
             <View style={styles.tableCell2}>
-              <Text>Male</Text>
+            <TextInput style={{padding: 0, margin: 0}} value={user?.gender} onChange={(e) => {
+              setUser({...user, gender: e.nativeEvent.text});
+            }}/>
             </View>
           </View>
 
@@ -45,13 +72,15 @@ export default function Index() {
               <Text>Age</Text>
             </View>
             <View style={styles.tableCell2}>
-              <Text>24</Text>
+            <TextInput style={{padding: 0, margin: 0}} value={user?.age.toString()} onChange={(e) => {
+              setUser({...user, age: parseInt(e.nativeEvent.text)});
+            }}/>
             </View>
           </View>
         </View>
 
         <Image
-          source={require('@/assets/images/yai-1.png')}
+          source={require('@/assets/images/yinyan.png')}
           resizeMode="contain"
           style={{ alignSelf: 'center', margin: 10, width: 70, height: 70 }}
         />
@@ -63,7 +92,9 @@ export default function Index() {
             <Text>Details</Text>
           </View>
           <View style={styles.tableCell2}>
-            <Text>Sachindu Kavishka</Text>
+            <TextInput style={{padding: 0, margin: 0}} value={details?.details} onChange={(e) => {
+              setDetails({...details, details: e.nativeEvent.text});
+            }}/>
           </View>
         </View>
 
@@ -74,7 +105,9 @@ export default function Index() {
             <Text>Method</Text>
           </View>
           <View style={styles.tableCell2}>
-            <Text>Schrödinger</Text>
+          <TextInput style={{padding: 0, margin: 0}} value={details?.method} onChange={(e) => {
+              setDetails({...details, method: e.nativeEvent.text});
+            }}/>
           </View>
         </View>
 
@@ -85,7 +118,9 @@ export default function Index() {
             <Text>Date</Text>
           </View>
           <View style={styles.tableCell2}>
-            <Text>2001/03/10</Text>
+          <TextInput style={{padding: 0, margin: 0}} value={details?.date} onChange={(e) => {
+              setDetails({...details, date: e.nativeEvent.text});
+            }}/>
           </View>
         </View>
 
@@ -96,7 +131,9 @@ export default function Index() {
             <Text>Sign</Text>
           </View>
           <View style={styles.tableCell2}>
-            <Text>Pisces</Text>
+          <TextInput style={{padding: 0, margin: 0}} value={details?.sign} onChange={(e) => {
+              setDetails({...details, sign: e.nativeEvent.text});
+            }}/>
           </View>
         </View>
       </View>
@@ -128,6 +165,7 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 15,
     paddingVertical: 10,
   },

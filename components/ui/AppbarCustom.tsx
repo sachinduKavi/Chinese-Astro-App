@@ -14,7 +14,7 @@ export default class AppbarCustom extends Component<AppbarCustomProps> {
     return (
  
         <Appbar.Header 
-            style={{backgroundColor: '#F83D16', elevation: 4}} >
+            style={{backgroundColor: '#A57B38', elevation: 4}} >
             <Appbar.Action icon="home"  onPress={() => {}} color="white"/>
             <Appbar.Content title={title} titleStyle={{color: 'white', textAlign: 'center'}}/>
             <Appbar.Action icon="share"  onPress={() => {}} color="white"/>

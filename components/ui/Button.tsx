@@ -15,8 +15,8 @@ export default class ButtonAstro extends Component<{
     //   <View style={styles.button}>
         <TouchableOpacity 
         onPress={action}
-        style={{...styles.button, backgroundColor: active?'#F83D16': '#EEF0F4',}}>
-            <Text style={{...styles.buttonText, color: active? 'white': '#F83D16'}}>{title}</Text>
+        style={{...styles.button, backgroundColor: active?'#A57B38': '#EEF0F4',}}>
+            <Text style={{...styles.buttonText, color: active? 'white': '#A57B38'}}>{title}</Text>
         </TouchableOpacity>
     //   </View>
     )
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5,
         elevation: 0,
-        borderColor: '#F83D16',
+        borderColor: '#A57B38',
     },
 
     buttonText: {
