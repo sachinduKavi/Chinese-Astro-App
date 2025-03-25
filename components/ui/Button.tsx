@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
-import { Text, View, Button, TouchableOpacity } from 'react-native'
+import { Text, View, Button, TouchableOpacity, GestureResponderEvent } from 'react-native'
 import { StyleSheet } from 'react-native'
 
 export default class ButtonAstro extends Component<{
     title: string,
-    active: boolean
+    active: boolean,
+    action: (event: GestureResponderEvent) => void
 }> {
   render() {
 
-    const {title, active} = this.props
+    const {title, active, action} = this.props
 
     return (
     //   <View style={styles.button}>
-        <TouchableOpacity style={{...styles.button, backgroundColor: active?'#F83D16': '#EEF0F4',}}>
+        <TouchableOpacity 
+        onPress={action}
+        style={{...styles.button, backgroundColor: active?'#F83D16': '#EEF0F4',}}>
             <Text style={{...styles.buttonText, color: active? 'white': '#F83D16'}}>{title}</Text>
         </TouchableOpacity>
     //   </View>
