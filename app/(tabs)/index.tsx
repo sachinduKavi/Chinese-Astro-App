@@ -1,74 +1,120 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
+import { StyleSheet, Image } from 'react-native'
+import AppbarCustom from '@/components/ui/AppbarCustom'
+import Scafflod from '@/components/ui/Scafflod'
+import ButtonAstro from '@/components/ui/Button'
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+export default class index extends Component {
+  render() {
+    return (
+      <Scafflod 
+        appbar={<AppbarCustom title="Qi Men Dun Jia"/>}>
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+        <>
+          <Image  source={require('@/assets/images/user.png')} 
+          resizeMode="contain" 
+          style={{ alignSelf: 'center', margin: 10, width: 70, height: 70   }} />
+
+          <View style={styles.table}>
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Name</Text></View>
+                  <View style={styles.tableCell2}><Text>Sachindu Kavishka</Text></View>
+              </View>
+
+              <View style={styles.spacer}></View>
+
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Gender</Text></View>
+                  <View style={styles.tableCell2}><Text>Male</Text></View>
+              </View>
+
+              <View style={styles.spacer}></View>
+
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Age</Text></View>
+                  <View style={styles.tableCell2}><Text>24</Text></View>
+              </View>
+
+          </View>
+
+
+          <Image  source={require('@/assets/images/yai-1.png')} 
+              resizeMode="contain" 
+              style={{ alignSelf: 'center', margin: 10, width: 70, height: 70   }} />
+        </>
+
+
+        <View style={styles.table}>
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Details</Text></View>
+                  <View style={styles.tableCell2}><Text>Sachindu Kavishka</Text></View>
+              </View>
+
+              <View style={styles.spacer}></View>
+
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Method</Text></View>
+                  <View style={styles.tableCell2}><Text>Schrödinger</Text></View>
+              </View>
+
+              <View style={styles.spacer}></View>
+
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Date</Text></View>
+                  <View style={styles.tableCell2}><Text>2001/03/10</Text></View>
+              </View>
+
+
+              <View style={styles.spacer}></View>
+
+              <View style={styles.tableRow}>
+                  <View style={styles.tableCell1}><Text>Sign</Text></View>
+                  <View style={styles.tableCell2}><Text>Piscus</Text></View>
+              </View>
+
+          </View>
+
+
+        <ButtonAstro title="Generate" active={true}/>
+        <ButtonAstro title="Cancel" active={false}/>
+
+
+      </Scafflod>
+    ) 
+  }
+
+
+  
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+    table: {
+      margin: 10,
+      elevation: 0.5,
+      backgroundColor: 'white',
+    },
+
+    tableCell1: {
+      flex: 1
+    },
+
+    tableCell2: {
+      flex: 2,
+    },
+
+    tableRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      // borderBottomWidth: 1,
+      // borderBottomColor: 'rgba(202, 202, 202, 0.4)',
+    },
+
+    spacer: {
+      height: 1,
+      backgroundColor: 'rgba(202, 202, 202, 0.4)',
+      marginHorizontal: 10
+    }
+  })
