@@ -4,6 +4,8 @@ import { Stack, useNavigationContainerRef } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
+import store from '@/redux/store';
+import { Provider } from 'react-redux';
 
 import 'react-native-reanimated';
 
@@ -30,6 +32,7 @@ export default function RootLayout() {
  
 
   return (
+    <Provider store={store}>
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <>
         <Stack>
@@ -39,5 +42,6 @@ export default function RootLayout() {
         <StatusBar style="auto" />
       </>
     </ThemeProvider>
+    </Provider>
   );
 }

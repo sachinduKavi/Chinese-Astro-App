@@ -4,10 +4,16 @@ import { useRouter } from 'expo-router';
 import AppbarCustom from '@/components/ui/AppbarCustom';
 import Scafflod from '@/components/ui/Scafflod';
 import ButtonAstro from '@/components/ui/Button';
+import { RootState, AppDispatch } from '@/redux/store';
+import { setDetails } from '@/redux/details-slice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Index() {
   const router = useRouter();
 
+  // Global details state
+  const details = useSelector((state: RootState) => state.detailsSlice);
+  const dispatch: AppDispatch = useDispatch<AppDispatch>();
 
   const [user, setUser] = React.useState<{
     name: string,
@@ -19,17 +25,17 @@ export default function Index() {
     age: 24
   })
 
-  const [details, setDetails] = React.useState<{
-    details: string,
-    method: string,
-    date: string,
-    sign: string
-  }>({
-    details: 'Sachindu Kavishka',
-    method: 'Schrödinger',
-    date: '2001/03/10',
-    sign: 'Pisces'
-  });
+  // const [details, setDetails] = React.useState<{
+  //   details: string,
+  //   method: string,
+  //   date: string,
+  //   sign: string
+  // }>({
+  //   details: 'Sachindu Kavishka',
+  //   method: 'Schrödinger',
+  //   date: '2001/03/10',
+  //   sign: 'Pisces'
+  // });
 
   return (
     <Scafflod appbar={<AppbarCustom title="Qi Men Dun Jia" />}>
@@ -93,7 +99,7 @@ export default function Index() {
           </View>
           <View style={styles.tableCell2}>
             <TextInput style={{padding: 0, margin: 0}} value={details?.details} onChange={(e) => {
-              setDetails({...details, details: e.nativeEvent.text});
+              dispatch(setDetails({...details, details: e.nativeEvent.text}));
             }}/>
           </View>
         </View>
@@ -106,7 +112,7 @@ export default function Index() {
           </View>
           <View style={styles.tableCell2}>
           <TextInput style={{padding: 0, margin: 0}} value={details?.method} onChange={(e) => {
-              setDetails({...details, method: e.nativeEvent.text});
+              dispatch(setDetails({...details, method: e.nativeEvent.text}));
             }}/>
           </View>
         </View>
@@ -119,7 +125,7 @@ export default function Index() {
           </View>
           <View style={styles.tableCell2}>
           <TextInput style={{padding: 0, margin: 0}} value={details?.date} onChange={(e) => {
-              setDetails({...details, date: e.nativeEvent.text});
+              dispatch(setDetails({...details, date: e.nativeEvent.text}));
             }}/>
           </View>
         </View>
@@ -132,7 +138,7 @@ export default function Index() {
           </View>
           <View style={styles.tableCell2}>
           <TextInput style={{padding: 0, margin: 0}} value={details?.sign} onChange={(e) => {
-              setDetails({...details, sign: e.nativeEvent.text});
+              dispatch(setDetails({...details, sign: e.nativeEvent.text}));
             }}/>
           </View>
         </View>

@@ -5,8 +5,14 @@ import AppbarCustom from '@/components/ui/AppbarCustom'
 import { StyleSheet } from 'react-native'
 import Cell from '@/components/Cell'
 import { Image } from 'react-native'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
+import { detailsInterface } from '@/redux/details-slice'
 
 export default function generate() {
+
+  const details:detailsInterface  = useSelector((state: RootState) => state.detailsSlice)
+
   return (
     <Scafflod appbar={<AppbarCustom title="Generate" />}>
       <>
@@ -18,7 +24,7 @@ export default function generate() {
                     <Text>Details</Text>
                   </View>
                   <View style={styles.tableCell2}>
-                    <Text>Sachindu Kavishka</Text>
+                    <Text>{details.details}</Text>
                   </View>
                 </View>
         
@@ -29,7 +35,7 @@ export default function generate() {
                     <Text>Method</Text>
                   </View>
                   <View style={styles.tableCell2}>
-                    <Text>Schrödinger</Text>
+                    <Text>{details.method}</Text>
                   </View>
                 </View>
         
@@ -40,7 +46,7 @@ export default function generate() {
                     <Text>Date</Text>
                   </View>
                   <View style={styles.tableCell2}>
-                    <Text>2001/03/10</Text>
+                    <Text>{details.date}</Text>
                   </View>
                 </View>
         
@@ -51,7 +57,7 @@ export default function generate() {
                     <Text>Sign</Text>
                   </View>
                   <View style={styles.tableCell2}>
-                    <Text>Pisces</Text>
+                    <Text>{details.sign}</Text>
                   </View>
                 </View>
               </View>
