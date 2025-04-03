@@ -11,7 +11,7 @@ interface detailsInterface {
 const initialState: detailsInterface= {
     details: 'Sachindu Kavishka',
     method: 'Schrödinger',
-    date: '2001/03/10',
+    date: '["Date: 2001/03/12", "Time: 2"]',
     sign: 'Pisces'
 }
 

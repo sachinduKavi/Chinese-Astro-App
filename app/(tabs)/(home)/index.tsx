@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import AppbarCustom from '@/components/ui/AppbarCustom';
 import Scafflod from '@/components/ui/Scafflod';
@@ -7,6 +7,10 @@ import ButtonAstro from '@/components/ui/Button';
 import { RootState, AppDispatch } from '@/redux/store';
 import { setDetails } from '@/redux/details-slice';
 import { useSelector, useDispatch } from 'react-redux';
+import FlyDatePicker from '@/components/FlyDatePicker';
+import { Overlay } from 'react-native-elements';
+import { useState } from 'react';
+
 
 export default function Index() {
   const router = useRouter();
@@ -15,7 +19,8 @@ export default function Index() {
   const details = useSelector((state: RootState) => state.detailsSlice);
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
 
-  const [user, setUser] = React.useState<{
+  const [overlay, setOverlay] = useState<boolean>(true)
+  const [user, setUser] = useState<{
     name: string,
     gender: string,
     age: number
@@ -36,7 +41,7 @@ export default function Index() {
   //   date: '2001/03/10',
   //   sign: 'Pisces'
   // });
-
+  const CITIES = 'Jakarta,Bandung,Sumbawa,Taliwang,Lombok,Bima'.split(',');
   return (
     <Scafflod appbar={<AppbarCustom title="Qi Men Dun Jia" />}>
       <>
@@ -124,9 +129,16 @@ export default function Index() {
             <Text>Date</Text>
           </View>
           <View style={styles.tableCell2}>
-          <TextInput style={{padding: 0, margin: 0}} value={details?.date} onChange={(e) => {
+
+          <TouchableOpacity onPress={() => setOverlay(true)}>
+          <TextInput style={{padding: 0, margin: 0}} value={details?.date} 
+          editable={false}
+          onChange={(e) => {
               dispatch(setDetails({...details, date: e.nativeEvent.text}));
             }}/>
+
+            </TouchableOpacity>  
+          
           </View>
         </View>
 
@@ -152,11 +164,26 @@ export default function Index() {
         }}
       />
       <ButtonAstro title="Cancel" active={false} action={() => {}} />
+
+      
+      <Overlay isVisible={overlay} onBackdropPress={() => setOverlay(pre => !pre)}>
+
+        <FlyDatePicker />
+    
+      </Overlay>
+      
     </Scafflod>
   );
 }
 
 const styles = StyleSheet.create({
+  popup: {
+    zIndex: 10,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
+  },
+
   table: {
     margin: 10,
     elevation: 0.5,
@@ -180,4 +207,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(202, 202, 202, 0.4)',
     marginHorizontal: 10,
   },
+
 });
